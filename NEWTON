@@ -1,0 +1,26 @@
+import math
+
+def df(x):
+  h=0.000001
+  return((f(x + h)-f(x))/h)
+
+def f(x):
+  return(x**3+3*x-11)
+
+x0= float(input("Entre com a aproximação inicial: "))
+e = 0.00001
+x= 0.0
+n0= 100
+
+i=1
+while( math.fabs(f(x0)) > e):
+
+  x= x0 - f(x0)/df(x0)
+  x0 = x
+  i= i + 1
+  if(i >= n0):
+    print("ATENÇÃO RAIZ NÃO ENCONTRADA")
+    break
+
+if(i < n0):
+  print("\n\nRaiz %f\nInterações: %i\nf(%f) = %f\n\n"%(x0,i,x0,f(x0)))
