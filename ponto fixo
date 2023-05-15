@@ -1,0 +1,20 @@
+import math
+
+def f(x):
+  return pow(x,2)-math.exp(x)
+
+def g(x):
+  return -math.sqrt(math.exp(x))
+
+x0= float(input("Digite a aproximação inicial x0: "))
+I=float(input("Digite a quantidade de interações: "))
+i=0
+
+def pontoFixo():
+  while i <= I:
+    x1=g(x0)
+    x0= x1
+    i=i+1
+  print("A raiz encontrada foi x= ",x1)
+  print("f(x)= ",f(x1))
+  print("g(x)= ",x1)
