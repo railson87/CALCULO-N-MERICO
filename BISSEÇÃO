@@ -1,0 +1,32 @@
+import math
+
+def f(x):
+  return(2*math.sin(2*x) - x**3 + 3)
+
+
+a = float(input("Insira o valor 'a' do intervalo [a;b]: "))
+b = float(input("Insira o valor 'b' do intervalo [a;b]: "))
+
+e = 0.0001
+tol= 0.000001
+cont= 0
+Ni=100
+
+c = b-a
+x0=(a*f(b) - b*f(a))/(f(b)-f(a))
+
+while(c > e or math.fabs(f(x0)) > tol):
+  if((f(a)*f(x0)) < 0):
+    b= x0
+  if((f(a)*f(x0)) > 0):
+    a= x0
+
+  c=b-a
+  
+  x0 = (a*f(b) - b*f(a))/(f(b)-f(a))
+  cont = cont + 1
+  
+  if(cont >= Ni):
+    break
+
+print("\n\n\nRaiz: %f\nInterações: %i\nf(%f) = %e" %(x0,cont,x0,f(x0)))
